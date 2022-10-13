@@ -1,9 +1,12 @@
-import { StatusBar } from 'expo-status-bar';
 import { Button, StyleSheet, Text, View } from 'react-native';
-import { Provider, useDispatch, useSelector } from 'react-redux';
-import { testSlice } from './src/redux/testSlice';
-import { useAppDispatch, useAppSelector } from './src/hooks/hooks';
+import { Provider } from 'react-redux';
 import store from './src/redux/store';
+import HomeScreens from './src/screens/HomeScreens';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
@@ -15,28 +18,11 @@ export default function App() {
 }
 
 const MyApp = () => {
-  const dispatch = useAppDispatch();
   return (
-    <View style={styles.container}>
-      <Text>{useAppSelector(state => state.test.text)}</Text>
-      <Button 
-        title= "Click here"
-        onPress = {
-          () => {
-            dispatch(testSlice.actions.textChange("LâmGS"))
-          }
-        }
-      />
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreens} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
