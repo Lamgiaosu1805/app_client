@@ -8,13 +8,13 @@ import store from './src/redux/store';
 export default function App() {
   return (
     <Provider store = {store}>
-      <Test />
+      <MyApp />
     </Provider>
    
   );
 }
 
-const Test = () => {
+const MyApp = () => {
   const dispatch = useAppDispatch();
   return (
     <View style={styles.container}>
