@@ -13,7 +13,15 @@ export default function HomeScreens() {
             title= "Click here"
             onPress = {
                 () => {
-                    dispatch(testSlice.actions.textChange("LâmGS"))
+                    dispatch(testSlice.actions.textChange(1))
+                }
+            }
+            />
+            <Button 
+            title= "reset"
+            onPress = {
+                () => {
+                    dispatch(testSlice.actions.reset())
                 }
             }
             />
